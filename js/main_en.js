@@ -18,7 +18,7 @@ document.getElementById("ps_exit").textContent = locale.result[3]
 
 
 for(const emoName of [...document.getElementsByClassName("emoIcon")].map(el=>el.id)){
-  document.getElementById(emoName).lastElementChild.textContent = locale.emotion[emoName];
+  document.getElementById(emoName).lastElementChild.innerHTML = locale.emotion[emoName];
 }
 
 

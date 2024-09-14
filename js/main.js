@@ -18,7 +18,7 @@ document.getElementById("ps_exit").textContent = locale.result[3]
 
 
 for(const emoName of [...document.getElementsByClassName("emoIcon")].map(el=>el.id)){
-  document.getElementById(emoName).lastElementChild.textContent = locale.emotion[emoName];
+  document.getElementById(emoName).lastElementChild.innerHTML = locale.emotion[emoName];
 }
 
 
@@ -377,7 +377,7 @@ async function counseling2(){
   speechEmma(locale.counseling2[1]);
   await sleep(1600);
   speechEmma(locale.counseling2[2]);
-  await sleep(3200);
+  await sleep(2400);
   emotions();
 }
 

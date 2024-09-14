@@ -69,8 +69,8 @@
         "Realization": "気付き",
         "Relief": "安心・安堵",
         "Sadness": "悲しみ",
-        "Surprise_N": "嫌なサプライズ",
-        "Surprise_P": "嬉しいサプライズ",
+        "Surprise_N": "サプライズ<br>(嫌な)",
+        "Surprise_P": "サプライズ<br>(嬉しい)",
         "Sympathy": "共感",
         "Triumph": "達成感"
     }
