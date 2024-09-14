@@ -1,5 +1,5 @@
 // reading locale file
-const fn = "./EDA/json/ja.json";
+const fn = "./json/ja.json";
 const locale = await (await fetch(fn)).json();
 document.getElementById("btn_no").textContent  = locale.ui[2]
 document.getElementById("btn_yes").textContent = locale.ui[3]
@@ -94,7 +94,7 @@ resultPaint();
 // start logo
 // tag:start_logo
 async function startLogo(){
-  const imgPath = "./EDA/img/title.png";
+  const imgPath = "./img/title.png";
   
   img.src = imgPath;
 
