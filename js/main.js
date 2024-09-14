@@ -1,5 +1,5 @@
 // reading locale file
-const fn = "./json/ja.json";
+const fn = "/EDA/json/ja.json";
 const locale = await (await fetch(fn)).json();
 document.getElementById("btn_no").textContent  = locale.ui[2]
 document.getElementById("btn_yes").textContent = locale.ui[3]
@@ -461,7 +461,7 @@ function eDraw(){
     const e_obj = e_div.firstElementChild;
     const e_txt = e_div.lastElementChild;
     e_obj.type= "image/svg+xml";
-    e_obj.data = "./img/emotion/"+emoName+".svg";
+    e_obj.data = "/EDA/img/emotion/"+emoName+".svg";
     e_div.addEventListener("click", eAdd);
     emoXY[emoName] = {"x":0,"y":0};
   }
