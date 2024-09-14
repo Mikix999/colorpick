@@ -1,0 +1,126 @@
+
+#popup{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+#window_graph{
+    position: absolute;
+    height: 80%;
+    aspect-ratio: 4/3;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translateY(-50%) translateX(-50%);
+    background-color: #000804ff;
+    border: #99ff99 solid;
+}
+#window_selEmo{
+    position: absolute;
+    font-size: 3vh;
+    height: 20em;
+    width: 98%;
+    margin: 0;
+    padding-top: 1%;
+    top: 3%;
+    left: 50%;
+    opacity: 0;
+    transform: translateX(-50%);
+    background-color: #000804ff;
+    border: #99ff99 solid;
+    display: flex;
+    flex-direction: column;
+}
+
+/* emotions */
+#emo_div{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+}
+#emoR1, #emoR2, #emoR3{
+    width: 100%;
+    height: 33%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+.emoIcon{
+    height: 90%;
+    aspect-ratio: 3/4;
+    border: #99ff99 solid;
+    background-color: #99ff9955;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+.emoIcon > object{
+    width: 80%;
+    margin: auto 10%;
+    pointer-events: none;
+}
+.emoIcon > p{
+    position: absolute;
+    color: #99ff99;
+    font-size: 0.85vw;
+    pointer-events: none;
+}
+#footer_selEmo{
+    opacity: 0;
+}
+
+/* graph */
+#w_graph{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#header_graph{
+    font-size:3vh;
+    width: 94%;
+    height: 3em;
+    margin: 0 3%;
+    background-color: #000804cc;
+    color: #99ff99;
+}
+#main_graph{
+    width: 80%;
+    margin: 0 10%;
+    aspect-ratio: 4/3;
+    border: 3px solid #99ff99;
+}
+#footer_graph, #footer_selEmo{
+    font-size: 3vh;
+    width: 94%;
+    margin: 0 3%;
+    height: 4em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    opacity: 0;
+}
+#p_header_graph{
+    font-size: 2.5vh;
+    margin: 0;
+    text-align: center;
+}
+#c_graph{
+    width: 100%;
+    aspect-ratio: 4/3;
+    margin: 0;
+    cursor: none !important;
+}
+.pg_btn, .pe_btn{
+    font-size: 2.5vh;
+    box-sizing: border-box;
+    height: 70%;
+    width: 7em;
+    margin-top: auto;
+    border: 0;
+    background-color: #99ff99ff;
+    color: #000804ff;
+}

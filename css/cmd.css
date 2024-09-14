@@ -1,0 +1,83 @@
+textarea{
+    font-size: 3vh;
+    background-color: #0000;
+    color: #99ff99;
+    outline: none;
+    border: 0;
+    resize: none;
+}
+#emma_classic{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    /* transition: 2.5s; */
+}
+#emma_tbox, #user_tbox{
+    width: 98%;
+    margin: 0 1%;
+    opacity: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    border: #99ff99 solid;
+}
+#emma_tbox{
+    margin-top: 1%;
+    pointer-events: none;
+}
+#nm_emma, #nm_user{
+    line-height: 100%;
+    width: 3.5vh;
+    opacity: 0;
+    text-align: right;
+    margin-right: 0.1em;
+    pointer-events: none;
+}
+#ta_emma, #ta_user{
+    flex-grow: 1;
+    caret-color: #99ff99;
+    margin-left: 0.5%;
+}
+#ta_emma{
+    border-left: #99ff99, solid;
+    pointer-events: none;
+}
+#nm_emma, #ta_emma{
+    height: 20em;
+    padding: 1% 0;
+    line-height: 100%;
+}
+#nm_user, #ta_user{
+    height: 8em;
+    padding: 1% 0;
+}
+
+.emma_buttons{
+    font-size: 3vh;
+    width: 94%;
+    margin: 0 3%;
+    height: 12em;
+}
+#eb_submit, #eb_check{
+    height:  0;
+    width:   100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.em_btn{
+    font-size: 2.5vh;
+    box-sizing: border-box;
+    height: 70%;
+    width: 7em;
+    margin-top: auto;
+    border: 0;
+    background-color: #99ff99ff;
+    color: #000804ff;
+}

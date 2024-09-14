@@ -1,0 +1,12 @@
+/* start logo */
+#start_logo     {z-index: 20;}
+#c_slogo        {z-index: 21;}
+#tt_slogo       {z-index: 22;}
+#sb_slogo       {z-index: 22;}
+
+/* counseling screen */
+#emma_classic   {z-index: 10;}
+
+/* popup window */
+#popup          {z-index: 70;}
+#window_selEmo  {z-index: 81;}

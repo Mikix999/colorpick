@@ -1,0 +1,81 @@
+#resultPaint{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#paint{
+    height: 96%;
+    width: 48%;
+    margin: 2% 1%;
+    box-sizing: border-box;
+    border: #99ff99 solid;
+}
+#paint_RGB{
+    height: 60%;
+    width: 100%;
+    margin: 0;
+}
+#paint_save{
+    height: 40%;
+    width:  80%;
+    margin: 0 10%;
+}
+#paint_save > button{
+    height:   18%;
+    width:   100%;
+    margin:  1% 0;
+    padding: 0;
+    border: 0;
+    background-color: #99ff99;
+    font-size:3vh;
+}
+
+#result{
+    height: 96%;
+    width: 48%;
+    margin: 2% 1%;
+    box-sizing: border-box;
+    border: #99ff99 solid;
+    background-color: aliceblue;
+}
+
+#result_typo{
+    position: relative;
+    width: 70%;
+    aspect-ratio: 1;
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: aquamarine;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+#result_meta{
+    width: 90%;
+    margin-bottom: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: aquamarine;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+#r_meta{
+    width: 100%;
+    aspect-ratio: 3;
+}
+
+.r_canv{
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1;
+    
+}
