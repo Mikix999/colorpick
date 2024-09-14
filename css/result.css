@@ -43,7 +43,7 @@
     margin: 2% 1%;
     box-sizing: border-box;
     border: #99ff99 solid;
-    background-color: aliceblue;
+    background-color: rgb(255, 251, 233);
 }
 
 #result_typo{
@@ -53,24 +53,17 @@
     margin-top: 5%;
     margin-left: 15%;
     margin-right: 15%;
-    background-color: aquamarine;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 }
 #result_meta{
-    width: 90%;
+    width: 70%;
+    aspect-ratio: 16/5;
     margin-bottom: 1%;
-    margin-left: 5%;
-    margin-right: 5%;
-    background-color: aquamarine;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
+    margin-left: 15%;
+    margin-right: 15%;
 }
 #r_meta{
     width: 100%;
-    aspect-ratio: 3;
+    height: 100%;
 }
 
 .r_canv{
@@ -78,4 +71,7 @@
     width: 100%;
     aspect-ratio: 1;
     
+}
+#canv_sav{
+    opacity: 0;
 }

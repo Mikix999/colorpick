@@ -1,8 +1,8 @@
 // reading locale file
 const fn = "/EDA/json/ja.json";
 const locale = await (await fetch(fn)).json();
-document.getElementById("btn_no").textContent  = locale.ui[2]
-document.getElementById("btn_yes").textContent = locale.ui[3]
+document.getElementById("btn_yes").textContent  = locale.ui[2]
+document.getElementById("btn_no").textContent = locale.ui[3]
 document.getElementById("btn_smt").textContent = locale.ui[4]
 document.getElementById("es_btn_reset").textContent = locale.ui[5]
 document.getElementById("ec_btn_reset").textContent = locale.ui[5]
@@ -47,6 +47,7 @@ const te_tarea = document.getElementById("ta_emma");
 const tu_tarea = document.getElementById("ta_user");
 const sbmt_set = document.getElementById("eb_submit");
 const chek_set = document.getElementById("eb_check");
+const rest_btn = document.getElementById("es_btn_reset");
 const sbmt_btn = document.getElementById("btn_smt");
 const yes_btn  = document.getElementById("btn_yes");
 const no_btn  = document.getElementById("btn_no");
@@ -78,6 +79,10 @@ var mouse = [null, null];
 
 //result
 const r_canv = document.getElementsByClassName("r_canv");
+const r_txts = document.getElementById("txt_save");
+const r_typs = document.getElementById("typo_save");
+const r_alls = document.getElementById("all_save");
+const r_exit = document.getElementById("ps_exit");
 // const r_ctx = r_canv.getContext("2d");
 
 /// basic functions
@@ -87,9 +92,9 @@ function sleep(ms) {
 
 eDraw();
 await sleep(4000);
-// startLogo();
+startLogo();
 // counseling2();
-resultPaint();
+// resultPaint();
 
 // start logo
 // tag:start_logo
@@ -225,7 +230,9 @@ async function counseling1(){
   tu_tarea.focus();
   emma_div.addEventListener("click", focusUTA);
   sbmt_btn.addEventListener("click", submitUTA);
+  rest_btn.addEventListener("click", () => {location.reload()});
   tu_tarea.addEventListener("keydown", chkCtrlEnter);
+
 }
 
 // next counseling2
@@ -456,6 +463,7 @@ async function emSelBack(){
 
 function eDraw(){
   const emos = document.getElementsByClassName("emoIcon");
+  emoXY = {"x":null,"y":null};
   for(const emoName of [...emos].map(el=>el.id)){
     const e_div = document.getElementById(emoName);
     const e_obj = e_div.firstElementChild;
@@ -463,7 +471,7 @@ function eDraw(){
     e_obj.type= "image/svg+xml";
     e_obj.data = "/EDA/img/emotion/"+emoName+".svg";
     e_div.addEventListener("click", eAdd);
-    emoXY[emoName] = {"x":0,"y":0};
+    
   }
 }
 
@@ -572,12 +580,10 @@ async function getCoord(){
     selectCoord();
     return -1;
   }else{
-    emoXY[tmp_e[0]] = {
+    emoXY = {
       "x":Math.round((tmp_p[0]*200)/g_canv.width )-100, 
       "y":Math.round((tmp_p[1]*200)/g_canv.height)-100
     };
-    // console.log(emoXY[tmp_e[0]]);
-    tmp_e = tmp_e.filter(emo => !(emo == tmp_e[0]));
     speechEmma(locale.counseling3[7]);
     await sleep(1600);
     speechEmma(locale.counseling3[8]);
@@ -702,23 +708,23 @@ async function resultPaint(){
   await sleep(SUDTime);
   document.getElementById("result_typo").style.opacity = 1;
   await sleep(SUDTime);
+  document.getElementById("result_meta").style.opacity = 1;
+  await sleep(SUDTime);
+  document.getElementById("resultPaint").style.pointerEvents = "auto";
   rRefresh();
+  r_txts.addEventListener("click", saveText);
+  r_typs.addEventListener("click", saveTypo);
+  r_alls.addEventListener("click", saveAll);
+  r_exit.addEventListener("click", () => {location.reload()});
 }
-// emoXY = {
-//   "x": 17,
-//   "y": 45
-// }
-emotion = ["awe", "Elation", "Relief", "Anger"];
 function rRefresh(){
   const cans = document.getElementsByClassName("r_canv");
   var ctxs = [];
   var meta = [];
-  console.log(emoXY);
   for(let i=0;i<emotion.length;i++){
     cans[i].width = cans[0].clientWidth;
     cans[i].height = cans[0].clientHeight;
     ctxs.push(cans[i].getContext("2d"));
-    console.log(document.querySelector(".emoIcon #"+emotion[i]));
   }
   const ch = cans[0].height;
   const cw = cans[0].width;
@@ -743,18 +749,114 @@ function rRefresh(){
   rCoord();
 }
 
-var createImage= function(context){
+function saveText(){
+  const fName = getFileName()+".txt";
+  const blob = new Blob([episode],{type:"text/plain"});
+  if (window.navigator.msSaveBlob) {
+    window.navigator.msSaveBlob(blob, fName);
+    window.navigator.msSaveOrOpenBlob(blob, fName);
+  } else {
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = fName;
+    link.click();
+    URL.revokeObjectURL(blob);
+  }
+  console.log(datetime, "saved text.");
+}
+
+function saveTypo(){
+  const fName = getFileName()+".png";
+  const can = document.getElementById("canv_sav");
+  const ctx = can.getContext("2d");
+  const cans = document.getElementsByClassName("r_canv");
+  can.width  = cans[0].width;
+  can.height = cans[0].height;
+
+  for(let i=0;i<emotion.length;i++){
+    ctx.drawImage(cans[i], 0, 0);
+  }
+  can.toBlob((blob)=>{
+    if (window.navigator.msSaveBlob) {
+      window.navigator.msSaveBlob(blob, fName);
+      window.navigator.msSaveOrOpenBlob(blob, fName);
+    } else {
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = fName;
+      link.click();
+      URL.revokeObjectURL(blob);
+    }
+  })
+}
+
+function saveAll(){
+  const fName = getFileName()+".png";
+  const can = document.getElementById("canv_sav");
+  const ctx = can.getContext("2d");
+  const cans = document.getElementsByClassName("r_canv");
+  const cant = document.getElementById("r_meta");
+  can.width  = cans[0].width+20;
+  can.height = cans[0].height+cant.height+20;
+  ctx.fillStyle = "rgb(255, 251, 233)";
+  ctx.fillRect(0, 0, can.width, can.height);
+
+  for(let i=0;i<emotion.length;i++){
+    ctx.drawImage(cans[i], 10, 10);
+  }
+  ctx.drawImage(cant, 10, cans[0].height+10);
+
+  can.toBlob((blob)=>{
+    if (window.navigator.msSaveBlob) {
+      window.navigator.msSaveBlob(blob, fName);
+      window.navigator.msSaveOrOpenBlob(blob, fName);
+    } else {
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = fName;
+      link.click();
+      URL.revokeObjectURL(blob);
+    }
+  })
+}
+
+var createImage = function(context){
   var image= new Image();
   image.src= context.canvas.toDataURL();
   return image;
 }
 
 function rCoord(){
-  const can = document.getElementsByClassName("r_canv");
+  const can = document.getElementById("r_meta");
   const ctx = can.getContext("2d");
+  can.height = 200;
+  can.width = 640;
   const ch = can.height;
   const cw = can.width;
+  const size = 30;
 
-  ctx.font = '50px Roboto medium';
-  ctx.fillText("test", 0, 0);
+  ctx.textAlign = "start";
+  ctx.textBaseline = "bottom";
+  ctx.fillstyle = "#000";
+  ctx.font = "bold 15px verdana, sans-serif ";
+  var nText = episode.split('').flatMap((_, i, a) => i % size ? [] : [episode.slice(i, i + size)]);
+  for(let i=0;i<nText.length;i++){
+    ctx.fillText(nText[i], 15, 50+(i*14));
+  }
+  ctx.textAlign = "end";
+  ctx.fillText("x="+emoXY.x, cw-15, 50+(nText.length+1)*14);
+  ctx.fillText("y="+emoXY.y, cw-15, 50+(nText.length+2)*14);
 }
+
+function getFileName(){
+  const date = new Date();
+  const Y = date.getFullYear().toString().padStart(4, '0');
+  const M = (date.getMonth() + 1).toString().padStart(2, '0');
+  const D = date.getDate().toString().padStart(2, '0');
+  const h = date.getHours().toString().padStart(2, '0');
+  const m = date.getMinutes().toString().padStart(2, '0');
+  const datetime = Y+M+D+"_"+h+m;
+  return datetime+"_EDA";
+}
+
+// document.getElementById("start_logo").style.pointerEvents = "none";
