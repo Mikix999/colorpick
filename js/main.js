@@ -728,7 +728,7 @@ function rRefresh(){
   let tmp_Rad = 0;
   for(let i=0;i<emotion.length;i++){
     let img = new Image();
-    img.src = "/img/emotion/"+emotion[i]+".svg";
+    img.src = "/EDA/img/emotion/"+emotion[i]+".svg";
     img.onload = function(){
       const sRad = tmp_Rad * Math.PI * 2;
       const eRad = (tmp_Rad += 1/emotion.length) * Math.PI * 2;
