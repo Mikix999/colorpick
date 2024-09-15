@@ -15,6 +15,7 @@ document.getElementById("txt_save").textContent = locale.result[0]
 document.getElementById("typo_save").textContent = locale.result[1]
 document.getElementById("all_save").textContent = locale.result[2]
 document.getElementById("ps_exit").textContent = locale.result[3]
+document.getElementById("r_outro").innerHTML = locale.result[4]
 
 
 for(const emoName of [...document.getElementsByClassName("emoIcon")].map(el=>el.id)){
@@ -832,18 +833,19 @@ function rCoord(){
   const ch = can.height;
   const cw = can.width;
   const size = 30;
+  const iOff = 2;
 
   ctx.textAlign = "start";
   ctx.textBaseline = "bottom";
   ctx.fillstyle = "#000";
   ctx.font = "bold 15px verdana, sans-serif ";
   var nText = episode.split('').flatMap((_, i, a) => i % size ? [] : [episode.slice(i, i + size)]);
-  for(let i=0;i<nText.length;i++){
+  for(let i=iOff;i<(nText.length+iOff);i++){
     ctx.fillText(nText[i], 15, 50+(i*14));
   }
   ctx.textAlign = "end";
-  ctx.fillText("x="+emoXY.x, cw-15, 50+(nText.length+1)*14);
-  ctx.fillText("y="+emoXY.y, cw-15, 50+(nText.length+2)*14);
+  ctx.fillText("x=\t"+emoXY.x, cw-15, 50+(nText.length+iOff+2)*14);
+  ctx.fillText("y=\t"+emoXY.y, cw-15, 50+(nText.length+iOff+3)*14);
 }
 
 function getFileName(){

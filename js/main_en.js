@@ -835,18 +835,19 @@ function rCoord(){
   const ch = can.height;
   const cw = can.width;
   const size = 30;
+  const iOff = 2;
 
   ctx.textAlign = "start";
   ctx.textBaseline = "bottom";
   ctx.fillstyle = "#000";
   ctx.font = "bold 15px verdana, sans-serif ";
   var nText = episode.split('').flatMap((_, i, a) => i % size ? [] : [episode.slice(i, i + size)]);
-  for(let i=0;i<nText.length;i++){
-    ctx.fillText(nText[i], 15, 50+((i+2)*14));
+  for(let i=iOff;i<(nText.length+iOff);i++){
+    ctx.fillText(nText[i], 15, 50+(i*14));
   }
   ctx.textAlign = "end";
-  ctx.fillText("x=\t"+emoXY.x, cw-15, 50+(nText.length+3)*14);
-  ctx.fillText("y=\t"+emoXY.y, cw-15, 50+(nText.length+4)*14);
+  ctx.fillText("x=\t"+emoXY.x, cw-15, 50+(nText.length+iOff+2)*14);
+  ctx.fillText("y=\t"+emoXY.y, cw-15, 50+(nText.length+iOff+3)*14);
 }
 
 function getFileName(){
