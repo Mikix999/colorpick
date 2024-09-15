@@ -263,7 +263,7 @@ async function submitUTA(){
 
     te_tarea.value += "\n\n"+ep_tmp+"\n";
     speechEmma(locale.counseling1[4]);
-    await sleep(1600);
+    await sleep(2400);
     chek_set.style.height = "100%";
     yes_btn.addEventListener("click", epChkYes);
     no_btn.addEventListener("click", epChkNo);
