@@ -73,6 +73,7 @@ const gf_back = document.getElementById("g_back_btn");
 g_canv.width  = 800;
 g_canv.height = 600;
 g_canv.backgroundColor = "black";
+const DGTime = 4800;
 var tmp_e = [];
 var tmp_p = [null, null];
 var mouse = [null, null];
@@ -524,7 +525,7 @@ async function counseling3(){
   speechEmma(locale.counseling3[1]);
   await sleep(1600);
   speechEmma(locale.counseling3[2]);
-  await sleep(1600);
+  await sleep(DGTime);
   selectCoord();
 }
 
@@ -841,11 +842,11 @@ function rCoord(){
   ctx.font = "bold 15px verdana, sans-serif ";
   var nText = episode.split('').flatMap((_, i, a) => i % size ? [] : [episode.slice(i, i + size)]);
   for(let i=0;i<nText.length;i++){
-    ctx.fillText(nText[i], 15, 50+(i*14));
+    ctx.fillText(nText[i], 15, 50+((i+2)*14));
   }
   ctx.textAlign = "end";
-  ctx.fillText("x="+emoXY.x, cw-15, 50+(nText.length+1)*14);
-  ctx.fillText("y="+emoXY.y, cw-15, 50+(nText.length+2)*14);
+  ctx.fillText("x=\t"+emoXY.x, cw-15, 50+(nText.length+3)*14);
+  ctx.fillText("y=\t"+emoXY.y, cw-15, 50+(nText.length+4)*14);
 }
 
 function getFileName(){

@@ -73,6 +73,7 @@ const gf_back = document.getElementById("g_back_btn");
 g_canv.width  = 800;
 g_canv.height = 600;
 g_canv.backgroundColor = "black";
+const DGTime = 4800;
 var tmp_e = [];
 var tmp_p = [null, null];
 var mouse = [null, null];
@@ -524,7 +525,7 @@ async function counseling3(){
   speechEmma(locale.counseling3[1]);
   await sleep(1600);
   speechEmma(locale.counseling3[2]);
-  await sleep(1600);
+  await sleep(DGTime);
   selectCoord();
 }
 
