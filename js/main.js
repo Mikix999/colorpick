@@ -466,13 +466,12 @@ function eDraw(){
   const emos = document.getElementsByClassName("emoIcon");
   emoXY = {"x":null,"y":null};
   for(const emoName of [...emos].map(el=>el.id)){
+    console.log(emoName);
     const e_div = document.getElementById(emoName);
     const e_obj = e_div.firstElementChild;
-    const e_txt = e_div.lastElementChild;
     e_obj.type= "image/svg+xml";
     e_obj.data = "/EDA/img/emotion/"+emoName+".svg";
     e_div.addEventListener("click", eAdd);
-    
   }
 }
 
@@ -491,7 +490,6 @@ function eAdd(e){
 function eSelected(id){
   const div = document.getElementById(id);
   const obj = div.firstElementChild;
-  const txt = div.lastElementChild;
   const svg = obj.getSVGDocument();
   const sPath = svg.querySelector('path');
 
@@ -505,7 +503,6 @@ function eSelected(id){
 function eUnselected(id){
   const div = document.getElementById(id);
   const obj = div.firstElementChild;
-  const txt = div.lastElementChild;
   const svg = obj.getSVGDocument();
   const sPath = svg.querySelector('path');
 
