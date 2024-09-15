@@ -15,6 +15,7 @@ document.getElementById("txt_save").textContent = locale.result[0]
 document.getElementById("typo_save").textContent = locale.result[1]
 document.getElementById("all_save").textContent = locale.result[2]
 document.getElementById("ps_exit").textContent = locale.result[3]
+document.getElementById("r_outro").innerHTML = locale.result[4]
 
 
 for(const emoName of [...document.getElementsByClassName("emoIcon")].map(el=>el.id)){
