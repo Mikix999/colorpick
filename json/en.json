@@ -29,15 +29,15 @@
         "Great.",
         "You filled all the imformation.",
         "Now I am gonna convert your feelings to one image",
-        ",Please take a quick break with herbal tea. Stay calm, stay chill."
+        "Please take a quick break with herbal tea. Stay calm, stay chill."
         
     ],
     "ui":[
         "click where your feelings are at<br />(X: Positive-Negative, Y: Active-Inactive)",
         "",
-        "YES",
-        "No",
         "OK",
+        "NO",
+        "YES",
         "QUIT",
         "BACK",
         "NEXT"

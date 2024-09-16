@@ -524,7 +524,7 @@ async function counseling3(){
   speechEmma(locale.counseling3[0]);
   await sleep(1600);
   speechEmma(locale.counseling3[1]);
-  await sleep(1600);
+  await sleep(2400);
   speechEmma(locale.counseling3[2]);
   await sleep(DGTime);
   selectCoord();
@@ -584,8 +584,9 @@ async function getCoord(){
   }else{
     emoXY = {
       "x":Math.round((tmp_p[0]*200)/g_canv.width )-100, 
-      "y":Math.round((tmp_p[1]*200)/g_canv.height)-100
+      "y":0-Math.round((tmp_p[1]*200)/g_canv.height)-100
     };
+    console.log(emoXY);
     speechEmma(locale.counseling3[7]);
     await sleep(1600);
     speechEmma(locale.counseling3[8]);
@@ -843,8 +844,8 @@ function rCoord(){
   ctx.fillstyle = "#000";
   ctx.font = "bold 15px verdana, sans-serif ";
   var nText = episode.split('').flatMap((_, i, a) => i % size ? [] : [episode.slice(i, i + size)]);
-  for(let i=iOff;i<(nText.length+iOff);i++){
-    ctx.fillText(nText[i], 15, 50+(i*14));
+  for(let i=0;i<(nText.length);i++){
+    ctx.fillText(nText[i], 15, 50+((i+iOff)*14));
   }
   ctx.textAlign = "end";
   ctx.fillText("x=\t"+emoXY.x, cw-15, 50+(nText.length+iOff+2)*14);

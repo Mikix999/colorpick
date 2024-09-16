@@ -16,7 +16,6 @@ document.getElementById("typo_save").textContent = locale.result[1]
 document.getElementById("all_save").textContent = locale.result[2]
 document.getElementById("ps_exit").textContent = locale.result[3]
 document.getElementById("r_outro").innerHTML = locale.result[4]
-console.log(locale.result[4])
 
 for(const emoName of [...document.getElementsByClassName("emoIcon")].map(el=>el.id)){
   document.getElementById(emoName).lastElementChild.innerHTML = locale.emotion[emoName];
@@ -581,7 +580,7 @@ async function getCoord(){
   }else{
     emoXY = {
       "x":Math.round((tmp_p[0]*200)/g_canv.width )-100, 
-      "y":Math.round((tmp_p[1]*200)/g_canv.height)-100
+      "y":0-Math.round((tmp_p[1]*200)/g_canv.height)-100
     };
     speechEmma(locale.counseling3[7]);
     await sleep(1600);
@@ -840,8 +839,8 @@ function rCoord(){
   ctx.fillstyle = "#000";
   ctx.font = "bold 15px verdana, sans-serif ";
   var nText = episode.split('').flatMap((_, i, a) => i % size ? [] : [episode.slice(i, i + size)]);
-  for(let i=iOff;i<(nText.length+iOff);i++){
-    ctx.fillText(nText[i], 15, 50+(i*14));
+  for(let i=0;i<(nText.length);i++){
+    ctx.fillText(nText[i], 15, 50+((i+iOff)*14));
   }
   ctx.textAlign = "end";
   ctx.fillText("x=\t"+emoXY.x, cw-15, 50+(nText.length+iOff+2)*14);
