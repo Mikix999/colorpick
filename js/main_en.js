@@ -1,3 +1,11 @@
+window.addEventListener("pageshow", function () {
+  var entries = performance.getEntriesByType("navigation");
+  entries.forEach(function (entry) {
+    if ((entry.type == "back_forward")) {location.reload();}
+  });
+});
+
+
 // reading locale file
 const fn = "/EDA/locale/en.json";
 const locale = await (await fetch(fn)).json();
