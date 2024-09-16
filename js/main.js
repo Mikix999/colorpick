@@ -725,7 +725,6 @@ async function resultPaint(){
 function rRefresh(){
   const cans = document.getElementsByClassName("r_canv");
   var ctxs = [];
-  var meta = [];
   for(let i=0;i<emotion.length;i++){
     cans[i].width = cans[0].clientWidth;
     cans[i].height = cans[0].clientHeight;
@@ -838,7 +837,7 @@ function rCoord(){
   const ch = can.height;
   const cw = can.width;
   const size = 30;
-  const iOff = 2;
+  const iOff = 10;
 
   ctx.textAlign = "start";
   ctx.textBaseline = "bottom";

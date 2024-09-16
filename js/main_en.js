@@ -603,6 +603,7 @@ async function getCoord(){
     await sleep(1600);
     speechEmma(locale.counseling3[10]);
     await sleep(1600);
+    await sleep(DGTime);
     emma_div.style.pointerEvents = "none";
     nu_tarea.style.opacity=0;
     await sleep(SUDTime);
@@ -612,7 +613,6 @@ async function getCoord(){
     await sleep(SUDTime);
     emma_div.style.opacity = 1;
     await sleep(SUDTime);
-    await sleep(DGTime);
     resultPaint();
   }
 }
@@ -731,7 +731,6 @@ async function resultPaint(){
 function rRefresh(){
   const cans = document.getElementsByClassName("r_canv");
   var ctxs = [];
-  var meta = [];
   for(let i=0;i<emotion.length;i++){
     cans[i].width = cans[0].clientWidth;
     cans[i].height = cans[0].clientHeight;
@@ -844,7 +843,7 @@ function rCoord(){
   const ch = can.height;
   const cw = can.width;
   const size = 30;
-  const iOff = 2;
+  const iOff = 10;
 
   ctx.textAlign = "start";
   ctx.textBaseline = "bottom";

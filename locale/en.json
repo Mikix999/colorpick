@@ -5,27 +5,27 @@
         "How was your day?",
         "Please tell me about your day.",
         "Would you like to submit those sentenses? If so, please push the button “OK”.",
-        "文字数が足りないです。もう少し、今日なにがあったか教えてもらえますか？",
+        "Can you tell me a little bit more?",
         "I see. It seems you have been through a lot today.",
         "Thanks for sharing your story.",
-        "大丈夫ですよ。焦らずに、マイペースで書いてください。"
+        "No worries. Take your time."
     ],
     "counseling2":[
         "Well, let’s labeling your feelings next.",
         "Please choose your “feeling” up to 4",
         "from 24 categories.",
-        "一つでもいいので選んでみてください。",
-        "正解も不正解もありません。",
-        "もう一度日記に戻って考えてもいいですよ。いつでも修正可能ですから。"
+        " Please choose at laest one image.",
+        "There is no right or wrong.",
+        "You can always go back to read your diary again and fix it."
     ],
     "counseling3":[
         "Good job. You did well.",
         "Then, let’s think as images. Next training is thinking visually instead of thinking by words.",
         "Please imagine where is your emotion is located at, and point the location on a chart.",
-        "エラーがおきました。",
-        "もう一度選択してください。",
-        "やり直しましょう。",
-        "もう一度クリックしてください。",
+        "There was an error.",
+        "Would you mind choosing again?",
+        "Let's try it again.",
+        "Please click it again.",
         "Great.",
         "You filled all the imformation.",
         "Now I am gonna convert your feelings to one image",
