@@ -19,8 +19,12 @@
 }
 #paint_RGB{
     height: 60%;
-    width: 100%;
-    margin: 0;
+    width: 90%;
+    margin: 0 5%;
+}
+#r_outro{
+    font-size: 3vh;
+    color: #99ff99;
 }
 #paint_save{
     height: 40%;

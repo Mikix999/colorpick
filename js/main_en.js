@@ -1,5 +1,5 @@
 // reading locale file
-const fn = "/EDA/json/en.json";
+const fn = "/EDA/locale/en.json";
 const locale = await (await fetch(fn)).json();
 document.getElementById("btn_yes").textContent  = locale.ui[2]
 document.getElementById("btn_no").textContent = locale.ui[3]
@@ -526,6 +526,7 @@ async function counseling3(){
   speechEmma(locale.counseling3[1]);
   await sleep(2400);
   speechEmma(locale.counseling3[2]);
+  await sleep(1600);
   await sleep(DGTime);
   selectCoord();
 }
@@ -584,9 +585,8 @@ async function getCoord(){
   }else{
     emoXY = {
       "x":Math.round((tmp_p[0]*200)/g_canv.width )-100, 
-      "y":0-Math.round((tmp_p[1]*200)/g_canv.height)-100
+      "y":0-(Math.round((tmp_p[1]*200)/g_canv.height)-100)
     };
-    console.log(emoXY);
     speechEmma(locale.counseling3[7]);
     await sleep(1600);
     speechEmma(locale.counseling3[8]);
@@ -604,12 +604,12 @@ async function getCoord(){
     await sleep(SUDTime);
     emma_div.style.opacity = 1;
     await sleep(SUDTime);
-    await sleep(1600);
+    await sleep(DGTime);
     resultPaint();
   }
 }
-
 //next resultPaint
+
 function gRefresh(canvas, ctx){
   canvas.width = canvas.clientWidth;
   canvas.height = canvas.clientHeight;
@@ -765,7 +765,6 @@ function saveText(){
     link.click();
     URL.revokeObjectURL(blob);
   }
-  console.log(datetime, "saved text.");
 }
 
 function saveTypo(){

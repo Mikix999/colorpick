@@ -1,5 +1,5 @@
 // reading locale file
-const fn = "/EDA/json/ja.json";
+const fn = "/EDA/locale/ja.json";
 const locale = await (await fetch(fn)).json();
 document.getElementById("btn_yes").textContent  = locale.ui[2]
 document.getElementById("btn_no").textContent = locale.ui[3]
@@ -73,7 +73,7 @@ const gf_back = document.getElementById("g_back_btn");
 g_canv.width  = 800;
 g_canv.height = 600;
 g_canv.backgroundColor = "black";
-const DGTime = 4800;
+const DGTime = 3200;
 var tmp_e = [];
 var tmp_p = [null, null];
 var mouse = [null, null];
@@ -466,7 +466,6 @@ function eDraw(){
   const emos = document.getElementsByClassName("emoIcon");
   emoXY = {"x":null,"y":null};
   for(const emoName of [...emos].map(el=>el.id)){
-    console.log(emoName);
     const e_div = document.getElementById(emoName);
     const e_obj = e_div.firstElementChild;
     e_obj.type= "image/svg+xml";
@@ -522,6 +521,7 @@ async function counseling3(){
   speechEmma(locale.counseling3[1]);
   await sleep(1600);
   speechEmma(locale.counseling3[2]);
+  await sleep(1600);
   await sleep(DGTime);
   selectCoord();
 }
@@ -580,7 +580,7 @@ async function getCoord(){
   }else{
     emoXY = {
       "x":Math.round((tmp_p[0]*200)/g_canv.width )-100, 
-      "y":0-Math.round((tmp_p[1]*200)/g_canv.height)-100
+      "y":0-(Math.round((tmp_p[1]*200)/g_canv.height)-100)
     };
     speechEmma(locale.counseling3[7]);
     await sleep(1600);
@@ -760,7 +760,6 @@ function saveText(){
     link.click();
     URL.revokeObjectURL(blob);
   }
-  console.log(datetime, "saved text.");
 }
 
 function saveTypo(){
