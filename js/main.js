@@ -98,11 +98,12 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+//debug 切り替え用
 eDraw();
 await sleep(4000);
-// startLogo();
+startLogo();
 // counseling2();
-resultPaint();
+// resultPaint();
 
 // start logo
 // tag:start_logo
