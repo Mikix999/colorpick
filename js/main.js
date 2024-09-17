@@ -100,9 +100,9 @@ function sleep(ms) {
 
 eDraw();
 await sleep(4000);
-startLogo();
+// startLogo();
 // counseling2();
-// resultPaint();
+resultPaint();
 
 // start logo
 // tag:start_logo
@@ -724,16 +724,21 @@ async function resultPaint(){
 }
 function rRefresh(){
   const cans = document.getElementsByClassName("r_canv");
+  let scale = 0.8;
   var ctxs = [];
   for(let i=0;i<emotion.length;i++){
     cans[i].width = cans[0].clientWidth;
     cans[i].height = cans[0].clientHeight;
     ctxs.push(cans[i].getContext("2d"));
   }
-  const ch = cans[0].height;
   const cw = cans[0].width;
-  const x0 = Math.ceil(cw / 2);
-  const y0 = Math.ceil(ch / 2);
+  const ch = cans[0].height;
+  const x0 = Math.round(cw / 2);
+  const y0 = Math.round(ch / 2);
+  const sw = Math.ceil(cw*scale);
+  const sh = Math.ceil(ch*scale);
+  const x1 = Math.ceil((cw-sw)/2);
+  const y1 = Math.ceil((cw-sw)/2);
 
   let tmp_Rad = 0;
   for(let i=0;i<emotion.length;i++){
@@ -747,7 +752,7 @@ function rRefresh(){
       ctxs[i].arc(x0, y0, x0*2, sRad-2*Math.PI, eRad-2*Math.PI);
       ctxs[i].clip();
       ctxs[i].fillStyle = "#999";
-      ctxs[i].drawImage(img, 0, 0, cw, ch);
+      ctxs[i].drawImage(img, x1, y1, sw, sh);
     }
   }
   rCoord();
@@ -837,7 +842,6 @@ function rCoord(){
   const ch = can.height;
   const cw = can.width;
   const size = 30;
-  const iOff = 10;
 
   ctx.textAlign = "start";
   ctx.textBaseline = "bottom";
@@ -845,11 +849,11 @@ function rCoord(){
   ctx.font = "bold 15px verdana, sans-serif ";
   var nText = episode.split('').flatMap((_, i, a) => i % size ? [] : [episode.slice(i, i + size)]);
   for(let i=0;i<(nText.length);i++){
-    ctx.fillText(nText[i], 15, 50+((i+iOff)*14));
+    ctx.fillText(nText[i], 15, 50+((i)*14));
   }
   ctx.textAlign = "end";
-  ctx.fillText("x=\t"+emoXY.x, cw-15, 50+(nText.length+iOff+2)*14);
-  ctx.fillText("y=\t"+emoXY.y, cw-15, 50+(nText.length+iOff+3)*14);
+  ctx.fillText("x=\t"+emoXY.x, cw-15, 50+(nText.length+1)*14);
+  ctx.fillText("y=\t"+emoXY.y, cw-15, 50+(nText.length+2)*14);
 }
 
 function getFileName(){
