@@ -1,134 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Your Trip Ver.0.1</title>
-    <link type='text/css' rel='stylesheet' href='./css/main.css' />
-    <link type='text/css' rel='stylesheet' href='./css/fonts.css' />
-    <link type='text/css' rel='stylesheet' href='./css/slogo.css' />
-    <link type='text/css' rel='stylesheet' href='./css/cmd.css' />
-    <link type='text/css' rel='stylesheet' href='./css/popup.css' />
-    <link type='text/css' rel='stylesheet' href='./css/result.css' />
-    <script type="module" src="./js/main_en.js"></script>
-  </head>
-  <body id="typo_body">
-    <!-- main page design -->
-    <header></header>
-    <main>
-      <div id="start_logo">
-        <p id="tt_slogo">Your Trip</p>
-        <button id="sb_slogo">START</button>
-        <canvas id="c_slogo"></canvas>
-      </div>
-      <div id="emma_classic">
-        <div id="emma_tbox">
-          <textarea id="nm_emma"></textarea>
-          <textarea id="ta_emma"></textarea>
-        </div>
-        <div id="user_tbox">
-          <textarea id="nm_user"></textarea>
-          <textarea id="ta_user"></textarea>
-        </div>
-        
-        <div class="emma_buttons">
-          <div  id="eb_submit">
-            <button class="em_btn" id="es_btn_reset"></button>
-            <button class="em_btn"></button>
-            <button class="em_btn" id="btn_smt"></button>
-          </div>
-          <div id="eb_check">
-            <button class="em_btn" id="ec_btn_reset"></button>
-            <button class="em_btn" id="btn_no"></button>
-            <button class="em_btn" id="btn_yes"></button>
-          </div>
-        </div>
-      </div>
-      <div id="resultPaint">
-        <div id="paint">
-          <div id="paint_RGB"><p id="r_outro"></p></div>
-          <div id="paint_save">
-            <button id="txt_save"></button>
-            <button id="typo_save"></button>
-            <button id="all_save"></button>
-            <button id="ps_exit"></button>
-          </div>
-        </div>
-        <div id="result">
-          <div id="result_typo">
-            <canvas class="r_canv" id="r_canv_1"></canvas>
-            <canvas class="r_canv" id="r_canv_2"></canvas>
-            <canvas class="r_canv" id="r_canv_3"></canvas>
-            <canvas class="r_canv" id="r_canv_4"></canvas>
-            <canvas class="r_canv" id="canv_sav"></canvas>
-          </div>
-          <div id="result_meta">
-            <canvas id="r_meta"></canvas>
-          </div>
-        </div>
-        <div id="footer_RP"></div>
-      </div>
-    </main>
-    <footer></footer>
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. カラーピッカーの要素を作成
+    const colorPicker = document.createElement("input");
+    colorPicker.type = "color";
+    colorPicker.value = "#000000"; // 初期値は黒
+    colorPicker.style.position = "fixed";
+    colorPicker.style.top = "10px";
+    colorPicker.style.right = "10px";
+    
+    // 2. エクスポートボタンの作成
+    const exportButton = document.createElement("button");
+    exportButton.innerText = "画像をダウンロード";
+    exportButton.style.position = "fixed";
+    exportButton.style.top = "10px";
+    exportButton.style.right = "100px";
 
-    <!-- action page design -->
-    <section id="fullscreen">
-      
-    </section>
-    <section id="popup">
-      <div id="window_graph">
-        <div id="w_graph">
-          <div id="header_graph">
-            <p id="p_header_graph">
-              click where your feelings are at<br />(X: Positive-Negative, Y: Active-Inactive)
-            </p>
-          </div>
-          <div id="main_graph"><canvas id="c_graph"></canvas></div>
-          <div id="footer_graph">
-            <button class="pg_btn" id="g_back_btn"></button>
-            <button class="pg_btn" id="reset_btn"></button>
-            <button class="pg_btn" id="g_ok_btn"></button>
-          </div>
-        </div>
-      </div>
-      <div id="window_selEmo">
-        <div id="emo_div">
-          <div id="emoR1">
-            <button class="emoIcon" id="Adoration"><object></object><p>Adoration</p></button>
-            <button class="emoIcon" id="Amusement"><object></object><p>Amusement</p></button>
-            <button class="emoIcon" id="Anger"><object></object><p>Anger</p></button>
-            <button class="emoIcon" id="Awe"><object></object><p>Awe</p></button>
-            <button class="emoIcon" id="Confusion"><object></object><p>Confusion</p></button>
-            <button class="emoIcon" id="Contempt"><object></object><p>Contempt</p></button>
-            <button class="emoIcon" id="Contentment"><object></object><p>Contentment</p></button>
-            <button class="emoIcon" id="Desire"><object></object><p>Desire</p></button>
-          </div>
-          <div id="emoR2">
-            <button class="emoIcon" id="Disappointment"><object></object><p>Dis-<br/>appointment</p></button>
-            <button class="emoIcon" id="Disgust"><object></object><p>Disgust</p></button>
-            <button class="emoIcon" id="Destress"><object></object><p>Destress</p></button>
-            <button class="emoIcon" id="Ecstasy"><object></object><p>Ecstasy</p></button>
-            <button class="emoIcon" id="Elation"><object></object><p>Elation</p></button>
-            <button class="emoIcon" id="Embarrassment"><object></object><p>Embarrass-<br/>ment</p></button>
-            <button class="emoIcon" id="Fear"><object></object><p>Fear</p></button>
-            <button class="emoIcon" id="Interest"><object></object><p>Interest</p></button>
-          </div>
-          <div id="emoR3">
-            <button class="emoIcon" id="Pain"><object></object><p>Pain</p></button>
-            <button class="emoIcon" id="Realization"><object></object><p>Realization</p></button>
-            <button class="emoIcon" id="Relief"><object></object><p>Relief</p></button>
-            <button class="emoIcon" id="Sadness"><object></object><p>Sadness</p></button>
-            <button class="emoIcon" id="Surprise_n"><object></object><p>Surprise<br/>Negative</p></button>
-            <button class="emoIcon" id="Surprise_p"><object></object><p>Surprise<br/>Positive</p></button>
-            <button class="emoIcon" id="Sympathy"><object></object><p>Sympathy</p></button>
-            <button class="emoIcon" id="Triumph"><object></object><p>Triumph</p></button>
-          </div>
-        </div>
-        <div id="footer_selEmo">
-          <button class="pe_btn" id="em_back_btn"></button>
-          <button class="pe_btn" id="reset_btn"></button>
-          <button class="pe_btn" id="em_ok_btn"></button>
-        </div>
-      </div>
-    </section>
-  </body>
-</html>
+    document.body.appendChild(colorPicker);
+    document.body.appendChild(exportButton);
+
+    // 3. 背景の変更
+    const finalImage = document.getElementById("r_canv_4"); // 最後の黒いイメージのcanvasを指定
+    colorPicker.addEventListener("input", function () {
+        if (finalImage) {
+            finalImage.style.backgroundColor = colorPicker.value;
+        }
+    });
+
+    // 4. 画像のエクスポート機能
+    exportButton.addEventListener("click", function () {
+        html2canvas(finalImage).then(canvas => {
+            let link = document.createElement("a");
+            link.download = "exported_image.png";
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        });
+    });
+
+    // html2canvasライブラリが必要
+    let script = document.createElement("script");
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+    document.body.appendChild(script);
+});
